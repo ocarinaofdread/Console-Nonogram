@@ -1,3 +1,5 @@
+package nonogram;
+
 import java.util.*;
 
 public class NonogramNormal {
