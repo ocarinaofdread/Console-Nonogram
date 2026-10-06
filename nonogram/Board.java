@@ -182,8 +182,8 @@ public class Board {
     while (comma != -1){
       String word = sub.substring(0,comma);
       if (word.length() != 3){
-        System.out.println("It seems one of your guesses is less\n" +
-                           "than 3 characters. Please try again.");
+        System.out.println("It seems one of your guesses is not equal\n" +
+                           "to 3 characters. Please try again.");
         ArrayList<String> temp = new ArrayList<String>();
         temp.add(null);
         return temp;
