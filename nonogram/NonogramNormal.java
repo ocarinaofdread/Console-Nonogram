@@ -1,7 +1,5 @@
 package nonogram;
 
-import java.util.*;
-
 public class NonogramNormal {
   /*
   * Instance Variables
@@ -26,14 +24,22 @@ public class NonogramNormal {
   /*
   * Methods
   */
-  // Creates the user's start puzzle
+  /**
+   * Creates the user's start puzzle.
+   * 
+   * @return a 2D array representing the starting board
+   */
   public int[][] initiatePuzzle(){
     points = 0;
     return new int[actualPuzzle.length][actualPuzzle[0].length];
   }
 
-  // Inputs one answer into the system (ex. a1x)
-  // 0 = failure, 1 = incorrect, 2 = correct, 3 = placing an x
+  /**
+   * Inputs one answer into the system (ex. a1x).
+   * 
+   * @param guess the guess to be inputted
+   * @return 0 = failure, 1 = incorrect, 2 = correct, 3 = placing an x
+   */
   private int inputGuess(String guess){
     if (guess.length() != 3){
       System.out.println("Seems that your guess " + guess + " was in the incorrect" +
@@ -119,8 +125,13 @@ public class NonogramNormal {
     }
   }
 
-  // Inputs an answer into the system and returns
-  // the appropriate feedback
+  /**
+   * Inputs an answer into the system and returns
+   * the appropriate feedback.
+   * 
+   * @param guess the user's guess
+   * @return feedback on the guess for the user
+   */
   public String inputGuessFeedback(String guess){
     int g = inputGuess(guess);
     String gs = guess.substring(0,2);
@@ -139,7 +150,13 @@ public class NonogramNormal {
     }
   }
 
-  // Converts a letter to its appropriate index
+  /**
+   * Converts a letter to its appropriate index. Returns
+   * -1 if called with an invalid {@code let}.
+   * 
+   * @param let the letter being tested
+   * @return the index of the letter
+   */
   private int letterToNumber(String let){
     String[] letters = {"a", "b", "c", "d", "e",
                         "f", "g", "h", "i", "j",
@@ -170,14 +187,20 @@ public class NonogramNormal {
     return index;
   }
 
-  // Creates a password and prints it to the player
+  /**
+   * Creates a password and prints it to the player.
+   */
   public void createPW(){
     System.out.println("Your Password: " + NonogramPassword.encode(playerPuzzle, points));
     System.out.println("Type it in the \"Begin w/ Password\" section when\n" +
                        "playing again to continue your game.");
   }
 
-  // Returns the player's puzzle as a String
+  /**
+   * Converts the player's current puzzle to a string.
+   * 
+   * @return the player's puzzle as a {@code String}
+   */
   public String puzzleToString(){
     String puz = "";
 
@@ -226,8 +249,12 @@ public class NonogramNormal {
     return puz;
   }
 
-  // Returns the final puzzle as a String;
-  // only used when completed
+  /**
+   * Returns the final puzzle as a String.
+   * Only used when completed.
+
+   * @return the completed puzzle as a {@code String}
+   */
   public String actualPuzzleToString(){
     String fin = "";
     for (int row = 0; row < actualPuzzle.length; row++){
@@ -244,7 +271,12 @@ public class NonogramNormal {
     return fin;
   }
 
-  // Converts a puzzle row into a String
+  /**
+   * Converts a puzzle row into a string.
+   * 
+   * @param row the puzzle row
+   * @return the puzzle row as a {@code String}
+   */
   private String rowToString(int[] row){
     String result = "|";
 
@@ -262,7 +294,9 @@ public class NonogramNormal {
     return result;
   }
 
-  // Assigns the Nonogram row and column numbers
+  /**
+   * Assigns the Nonogram row and column numbers.
+   */
   private void assignGridNumbers(){
     // Row Number Assignment
     int[][] rowNums = new int[actualPuzzle.length][actualPuzzle[0].length];
@@ -322,8 +356,12 @@ public class NonogramNormal {
     // System.out.println("\nColumns:" + int2DToString(colNums));
   }
 
-  // Returns the maximum number of numbers 
-  // the sides of the grid can show
+  /**
+   * Returns the maximum number of numbers 
+   * the sides of the grid can show.
+   * 
+   * @return the max number of numbers a side can show
+   */
   private int getGridMax(){
     int max = actualPuzzle.length;
     int count = 0;
@@ -340,7 +378,12 @@ public class NonogramNormal {
     return count;
   }
 
-  // Returns a 2D array of integers as a String
+  /**
+   * Returns a 2D array of integers as a String
+   * 
+   * @param list the 2D array to be converted
+   * @return a {@code String} representing {@code list}
+   */
   public static String int2DToString(int[][] list){
     String result = "";
     for (int row = 0; row < list.length; row++){
@@ -353,7 +396,11 @@ public class NonogramNormal {
     return result;
   }
 
-  // Returns a hint version of this
+  /**
+   * Returns a hint version of this nonogram.
+   * 
+   * @return a {@code NonogramHint} version of this
+   */
   public NonogramHint toHint(){
     int[][] puz = getActualPuzzle();
     String name = getPuzzleName();
@@ -363,7 +410,11 @@ public class NonogramNormal {
     return temp;
   }
 
-  // Returns a password version of this
+  /**
+   * Returns a password version of this nonogram.
+   * 
+   * @return a {@code NonogramPassword} version of this
+   */
   public NonogramPassword toPassword(){
     int[][] puz = getActualPuzzle();
     String name = getPuzzleName();
@@ -372,27 +423,32 @@ public class NonogramNormal {
     return temp;
   }
 
-  // Assigns a new value to points
   public void setPoints(int p){
     points = p;
   }
 
-  // Returns the value of points
   public int getPoints(){
     return points;
   }
 
-  // Returns the actual puzzle
+  /**
+   * Returns the actual puzzle.
+   * 
+   * @return the actual puzzle as a 2D array
+   */
   public int[][] getActualPuzzle(){
     return actualPuzzle;
   }
 
-    // Returns the player's puzzle
+  /**
+   * Returns the player's current puzzle.
+   * 
+   * @return the actual puzzle as a 2D array
+   */
   public int[][] getPlayerPuzzle(){
     return playerPuzzle;
   }
 
-  // Returns the puzzle's name
   public String getPuzzleName(){
     return puzzleName;
   }

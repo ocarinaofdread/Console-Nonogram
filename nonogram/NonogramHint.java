@@ -1,7 +1,5 @@
 package nonogram;
 
-import java.util.*;
-
 public class NonogramHint extends NonogramNormal {
   /*
   * Instance Variables
@@ -17,7 +15,11 @@ public class NonogramHint extends NonogramNormal {
   /*
   * Methods
   */
-  // Creates the user's start puzzle + a hint
+  /**
+   * Creates the user's start puzzle with a hint.
+   * 
+   * @return a 2D array representing the starting board
+   */
   public int[][] initiatePuzzle(){
     int[][] actualPuzzle = getActualPuzzle();
     

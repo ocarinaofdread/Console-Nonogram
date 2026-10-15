@@ -20,7 +20,9 @@ public class Board {
   /*
   * Methods
   */
-  // Starts the main menu
+  /**
+   * Starts the main menu.
+   */
   public void mainMenu(){
     System.out.println("Welcome to Console Nonogram!\n" +
                        "[1] Begin\n" +
@@ -38,8 +40,10 @@ public class Board {
     }
   }
 
-  // Asks whether the user wants to view simple
-  // or complex instructions
+  /**
+   * Asks whether the user wants to view simple
+   * or complex instructions.
+   */
   private void viewInstructions(){
     System.out.println("Which instructions would you like to view?\n" +
                        "[1] Veteran Instructions\n" +
@@ -58,7 +62,9 @@ public class Board {
     mainMenu();
   }
 
-  // Gives complex instructions + simple instructions
+  /**
+   * Gives complex instructions and simple instructions.
+   */
   private void newbieInstructions(){
     System.out.println("This is a game of Nonogram puzzles.\n" +
                        "It's a picture logic puzzle where you have to fill\n" +
@@ -81,7 +87,9 @@ public class Board {
     veteranInstructions();
   }
 
-  // Gives simple instructions
+  /**
+   * Gives simple instructions.
+   */
   private void veteranInstructions(){
     System.out.println("Normally, one would click or tap squares to guess,\n" +
                        "switching between clicking to x-out or fill in.\n" +
@@ -103,7 +111,9 @@ public class Board {
                        "will be given to you.\n");
   }
 
-  // Asks how to begin
+  /**
+   * Asks how to start the game.
+   */
   private void beginMenu(){
     System.out.println("How would you like to start?\n" +
                        "[1] Normal\n" +
@@ -120,7 +130,11 @@ public class Board {
     }
   }
 
-  // Begins the game
+  /**
+   * Begins the game.
+   * 
+   * @param type 1 = normal, 2 = hint, 3 = password
+   */
   public void begin(int type){
     if (type == 2){
       game = game.toHint();
@@ -133,7 +147,9 @@ public class Board {
     prompt();
   }
 
-  // Prompts the user for a response
+  /**
+   * Prompts the user for a response during the game loop.
+   */
   public void prompt(){
     if (checkCompletion()){
       System.out.println();
@@ -165,7 +181,12 @@ public class Board {
     
   }
 
-  // Converts a String of guesses into an array
+  /**
+   * Converts a {@code String} of guesses into an {@code ArrayList}.
+   * 
+   * @param s the {@code String} to be converted
+   * @return the converted list
+   */
   public ArrayList<String> toList(String s){
     if (s.indexOf(" ") != -1){
       System.out.println("A space was detected in your response.\n" +
@@ -207,7 +228,11 @@ public class Board {
     return list;
   }
 
-  // Takes one guess and inputs it
+  /**
+   * Takes one guess and inputs it.
+   * 
+   * @param guess the guess to be inputted
+   */
   public void guess(String guess){
     String response = game.inputGuessFeedback(guess);
     if (response != null){
@@ -218,7 +243,11 @@ public class Board {
     prompt();
   }
 
-  // Takes multiple guesses and inputs them
+  /**
+   * Takes multiple and inputs them.
+   * 
+   * @param guess the guess to be inputted
+   */
   public void guess(ArrayList<String> guesses){
     if (guesses.get(0) == null){
       prompt();
@@ -236,7 +265,11 @@ public class Board {
     prompt();
   }
 
-  // Checks if the player has completed the puzzle
+  /**
+   * Checks if the user has completed the puzzle.
+   * 
+   * @return whether the user has completed the puzzle
+   */
   public boolean checkCompletion(){
     int[][] play = game.getPlayerPuzzle();
     int[][] act = game.getActualPuzzle();
@@ -255,7 +288,12 @@ public class Board {
     return completed;
   }
 
-  // Converts a String ArrayList to an array
+  /**
+   * Converts an {@code ArrayList} of {@code String}s into an array.
+   * 
+   * @param list the {@code ArrayList} to convert
+   * @return an array with {@code list}'s values
+   */
   public static ArrayList<String> arrayListToArray(String[] list){
     ArrayList<String> result = new ArrayList<String>();
     for (int i = 0; i < list.length; i++){

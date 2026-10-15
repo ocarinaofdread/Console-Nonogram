@@ -17,7 +17,11 @@ public class NonogramPassword extends NonogramNormal {
   /*
   * Methods
   */
-  // Creates the user's start puzzle
+  /**
+   * Creates the user's start puzzle.
+   * 
+   * @return a 2D array representing the starting board
+   */
   public int[][] initiatePuzzle(){
     int[][] play = createPuzzle();
     if (play == null){
@@ -27,7 +31,11 @@ public class NonogramPassword extends NonogramNormal {
     }
   }
 
-  // Asks the user for a password
+  /**
+   * Asks the user for a password and creates a puzzle based on it.
+   * 
+   * @return a 2D array representing a decoded password's puzzle
+   */
   public int[][] createPuzzle(){
     Scanner input = new Scanner(System.in);
     System.out.println("Please enter a given password:");
@@ -36,7 +44,11 @@ public class NonogramPassword extends NonogramNormal {
     return decode(pw);
   }
   
-  // Encodes a puzzle into a password
+  /**
+   * Encodes a puzzle into a ppassword.
+   * 
+   * @return an encoded password
+   */
   public static String encode(int[][] puzzle, int points){
     String result = "";
     
@@ -59,7 +71,13 @@ public class NonogramPassword extends NonogramNormal {
     return result + points;
   }
 
-  // Decodes a password into a puzzle
+  /**
+   * Decodes a password into a puzzle. Returns null if the password
+   * is invalid.
+   * 
+   * @param pw the password to decode
+   * @return a 2D array representing a decoded password's puzzle
+   */
   public int[][] decode(String pw){
     try {
       int len = getActualPuzzle().length;
@@ -120,7 +138,12 @@ public class NonogramPassword extends NonogramNormal {
     }
   }
 
-  // Converts a String into an array of its characters
+  /**
+   * Converts a String into an array of its characters.
+   * 
+   * @param s the String to convert
+   * @return an array of the string's characters
+   */
   public static String[] stringToList(String s){
     String[] temp = new String[s.length()];
     String sub = s;
